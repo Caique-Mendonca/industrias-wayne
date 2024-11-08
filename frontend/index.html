@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indústrias Wayne - Sistema de Gerenciamento</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="login" class="container">
+        <h1>Indústrias Wayne</h1>
+        <form id="formLogin">
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="senha" placeholder="Senha" required>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
+
+    <div id="dashboard" class="container escondido">
+        <nav>
+            <h2>Bem-vindo às Indústrias Wayne</h2>
+            <button id="btnSair">Sair</button>
+        </nav>
+        
+        <div class="grid-dashboard">
+            <div class="card">
+                <h3>Recursos Totais</h3>
+                <div id="totalRecursos" class="numero-grande">0</div>
+            </div>
+            <div class="card">
+                <h3>Alertas de Segurança</h3>
+                <div id="totalAlertas" class="numero-grande">0</div>
+            </div>
+        </div>
+
+        <div class="secao-recursos">
+            <h3>Gerenciamento de Recursos</h3>
+            <form id="formRecurso">
+                <input type="text" id="nomeRecurso" placeholder="Nome do Recurso" required>
+                <select id="tipoRecurso" required>
+                    <option value="">Selecione o Tipo</option>
+                    <option value="equipamento">Equipamento</option>
+                    <option value="veiculo">Veículo</option>
+                    <option value="dispositivo">Dispositivo de Segurança</option>
+                </select>
+                <input type="number" id="quantidadeRecurso" placeholder="Quantidade" required>
+                <input type="text" id="localizacaoRecurso" placeholder="Localização" required>
+                <button type="submit">Adicionar Recurso</button>
+            </form>
+
+            <div id="listaRecursos">
+                <!-- Recursos serão inseridos aqui via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
