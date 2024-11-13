@@ -56,7 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (resposta.ok) {
                 formRecurso.reset();
-                carregarRecursos();
+                await carregarDados();
+                alert('Recurso adicionado com sucesso!');
             } else {
                 alert('Erro ao adicionar recurso');
             }
@@ -73,10 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     async function carregarDados() {
-        await Promise.all([
-            carregarRecursos(),
-            carregarDadosDashboard()
-        ]);
+        try {
+            await Promise.all([
+                carregarRecursos(),
+                carregarDadosDashboard()
+            ]);
+        } catch (erro) {
+            console.error('Erro ao carregar dados:', erro);
+        }
     }
 
     async function carregarRecursos() {
@@ -121,11 +126,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (resposta.ok) {
                 const dados = await resposta.json();
-                document.getElementById('totalRecursos').textContent = dados.totalRecursos;
-                document.getElementById('totalAlertas').textContent = dados.totalAlertas;
+                document.getElementById('totalRecursos').textContent = dados.totalRecursos || '0';
+                document.getElementById('totalAlertas').textContent = dados.totalAlertas || '0';
             }
         } catch (erro) {
             console.error('Erro ao carregar dados do dashboard:', erro);
         }
+    }
+
+    // Se houver token salvo, carrega os dados automaticamente
+    if (localStorage.getItem('token')) {
+        document.getElementById('login').classList.add('escondido');
+        document.getElementById('dashboard').classList.remove('escondido');
+        carregarDados();
     }
 });
