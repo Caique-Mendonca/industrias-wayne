@@ -134,7 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Se houver token salvo, carrega os dados automaticamente
+
+
+    
     if (localStorage.getItem('token')) {
         document.getElementById('login').classList.add('escondido');
         document.getElementById('dashboard').classList.remove('escondido');

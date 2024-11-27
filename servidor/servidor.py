@@ -125,7 +125,7 @@ class ManipuladorRequest(http.server.BaseHTTPRequestHandler):
         cursor.execute('SELECT COUNT(*) FROM recursos')
         total_recursos = cursor.fetchone()[0]
         
-        total_alertas = 2 
+        total_alertas = 2
         
         dados_dashboard = {
             'totalRecursos': total_recursos,
